@@ -6,7 +6,7 @@
 #    By: pibouill <pibouill@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/17 10:56:08 by pibouill          #+#    #+#              #
-#    Updated: 2024/01/24 17:28:48 by pibouill         ###   ########.fr        #
+#    Updated: 2024/03/29 13:47:21 by pibouill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,62 @@ END_COLOR		= \033[0;39m
 # **************************************************************************** #
 # SOURCES
 
-SRCS				= $(shell find ./src -type f -exec basename {} \; | rev | cut -d. -f2- | rev)
+SRCS				= 	ft_atoi \
+						ft_atoi_base \
+						ft_atol \
+						ft_bzero \
+						ft_calloc \
+						ft_digitcount \
+						ft_intlen \
+						ft_isalnum \
+						ft_isalpha \
+						ft_isascii \
+						ft_isdigit \
+						ft_isprint \
+						ft_itoa \
+						ft_lstadd_back \
+						ft_lstadd_front \
+						ft_lstclear \
+						ft_lstdelone \
+						ft_lstiter \
+						ft_lstlast \
+						ft_lstmap \
+						ft_lstnew \
+						ft_lstsize \
+						ft_memchr \
+						ft_memcmp \
+						ft_memcpy \
+						ft_memmove \
+						ft_memset \
+						ft_print_bits \
+						ft_printf \
+						ft_putchar \
+						ft_putchar_fd \
+						ft_putendl_fd \
+						ft_putnbr \
+						ft_putnbr_fd \
+						ft_putstr \
+						ft_putstr_fd \
+						ft_split \
+						ft_str_arr_len \
+						ft_strchr \
+						ft_strdup \
+						ft_striteri \
+						ft_strjoin \
+						ft_strlcat \
+						ft_strlcpy \
+						ft_strlen \
+						ft_strmapi \
+						ft_strncmp \
+						ft_strnstr \
+						ft_strrchr \
+						ft_strtrim \
+						ft_substr \
+						ft_tolower \
+						ft_toupper \
+						get_next_line \
+						putfcts_len
+
 SRC					= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRCS)))
 OBJ 				= $(addprefix $(BIN_DIR)/, $(addsuffix .o, $(SRCS)))
 

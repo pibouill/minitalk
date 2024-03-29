@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:02:47 by pibouill          #+#    #+#             */
-/*   Updated: 2024/03/20 20:54:24 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/03/29 13:49:19 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	ft_putstr(char *str);
 int		ft_digitcount(long nb, int base, int sign);
 int     ft_printf(const char *format, ...);
 int		ft_intlen(int nbr);
-int		ft_atoi_base(char *str, int base);
+int		ft_atoi_base(const char *str,unsigned int base);
 int		ft_str_arr_len(char **ar);
 
 #endif
