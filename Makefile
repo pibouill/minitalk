@@ -6,7 +6,7 @@
 #    By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 16:05:51 by pibouill          #+#    #+#              #
-#    Updated: 2024/03/27 16:30:09 by pibouill         ###   ########.fr        #
+#    Updated: 2024/03/30 15:05:36 by pibouill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ END_COLOR	= \033[0;39m
 ################################################################################
 ## SOURCES
 
-SRC			=
+SRCS		=
 
 OBJ			= $(addprefix $(BIN_DIR)/, $(addsuffix .o, $(SRC_FILES)))
 SRC			= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
