@@ -1,19 +1,22 @@
 ## allowed functions 
+
 ###	signal() 
-	void(*signal(int sig, void (*func)(int)))(int);
+	```void(*signal(int sig, void (*func)(int)))(int);```
 		- calls func when the signal sig occurs.
+		- recommended to use sigaction() instead - portability issues
 ###	sigemptyset()
-	int	sigemptyset(sigset_t *set);
+	```int	sigemptyset(sigset_t *set);```
 		- initializes the signal set given by set to empty, with all signals excluded from the set.
 
 ###	sigaddset()
-	int	siggaddset(sigset_t *set, int signum);
+	```int	siggaddset(sigset_t *set, int signum);```
 		- adds signal signum to set.
 
 ### sigaction()
-	int	sigaction(int sig, const struct sa *act, struct sa *oldact);
+	```int	sigaction(int sig, const struct sa *act, struct sa *oldact);```
 		- allows the calling process to examine and/or specify the action to be associated with a specific signal.
 		- struct sa, used to describe an action to be taken, includes (at least) the following members: 
+			```
 			{
 				void			(*sa_handler)(int);
 					=> Pointer to a signal-catching function or SIG_IGN - SIG_DFL macros.
@@ -27,6 +30,7 @@
 				void			(*sa_sigaction)(int, siginfo_t *, void *);
 					=> Pointer to a signal-catching function.
 			}
+			```
 			
 
 ### kill()
