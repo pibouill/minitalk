@@ -1,12 +1,12 @@
 ## allowed functions 
 
 ###	signal() 
-	```void(*signal(int sig, void (*func)(int)))(int);```
-		- calls func when the signal sig occurs.
-		- recommended to use sigaction() instead - portability issues
+```void(*signal(int sig, void (*func)(int)))(int);```
+- calls func when the signal sig occurs.
+- recommended to use sigaction() instead - portability issues
 ###	sigemptyset()
-	```int	sigemptyset(sigset_t *set);```
-		- initializes the signal set given by set to empty, with all signals excluded from the set.
+```int	sigemptyset(sigset_t *set);```
+- initializes the signal set given by set to empty, with all signals excluded from the set.
 
 ###	sigaddset()
 	```int	siggaddset(sigset_t *set, int signum);```
