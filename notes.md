@@ -9,13 +9,13 @@
 - initializes the signal set given by set to empty, with all signals excluded from the set.
 
 ###	sigaddset()
-	```int	siggaddset(sigset_t *set, int signum);```
-		- adds signal signum to set.
+```int	siggaddset(sigset_t *set, int signum);```
+- adds signal signum to set.
 
 ### sigaction()
-	```int	sigaction(int sig, const struct sa *act, struct sa *oldact);```
-		- allows the calling process to examine and/or specify the action to be associated with a specific signal.
-		- struct sa, used to describe an action to be taken, includes (at least) the following members: 
+```int	sigaction(int sig, const struct sa *act, struct sa *oldact);```
+- allows the calling process to examine and/or specify the action to be associated with a specific signal.
+- struct sa, used to describe an action to be taken, includes (at least) the following members: 
 			```
 			{
 				void			(*sa_handler)(int);
