@@ -23,7 +23,8 @@
 					=> Pointer to a signal-catching function or SIG_IGN - SIG_DFL macros.
 
 				sigset_t		sa_mask;
-					=> Additional set of signals to be blocked during execution of a signal-catching function.
+					=> Additional set of signals to be blocked 
+					during execution of a signal-catching function.
 
 				int				sa_flags;
 					=> Special flags to affect behavior of signal.
@@ -36,9 +37,6 @@
 
 ### kill()
 ### getpid()
-### malloc()
-### free()
 ### pause()
 ### sleep()
 ### usleep()
-### exit()
