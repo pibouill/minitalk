@@ -36,7 +36,22 @@
 			
 
 ### kill()
+```int kill(pid_t pid, int sig);```
+- sends a signal to a process. 
+- if pid > 0 --> sig is sent to the process with the ID specified by pid.
+- if pid == 0 --> sig is sent to every process in the process group of the calling process
+- if pid == -1 --> sig is sent to every process for which the calling process has permissions to send signals (Except system process).
+- if pid < -1 --> same as -1 but the signal is sent to the processes with the same group ID as pid.
+
+- if sig == 0 (null signal) --> used to check the validity of pid.
+
+- returns 0 on completion, -1 on error.
 ### getpid()
+```pid_t getpid(void);```
+- returns the process ID (PID) of the calling process.
 ### pause()
+```int pause(void);```
+- causes the calling process (or thread) to sleep until a signal is delivered that either terminates the process or causes the invocation of a signal-catching function.
+- returns only -1 when a signal was caught and the signal-catching function returned.
 ### sleep()
 ### usleep()
