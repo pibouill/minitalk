@@ -54,4 +54,10 @@
 - causes the calling process (or thread) to sleep until a signal is delivered that either terminates the process or causes the invocation of a signal-catching function.
 - returns only -1 when a signal was caught and the signal-catching function returned.
 ### sleep()
+```unsigned int sleep(unsigned int seconds);```
+- causes the calling thread to sleep either until the number of real-time seconds specified by secons are elapsed or until a signal arrives which is not ignored.
+- returns 0 if the time has elapsed or the number of seconds left to sleep, if the call was interrupted.
 ### usleep()
+```int usleep(useconds_t used);```
+- suspends execution of the calling thread for (at least) usec microseconds.
+- returns 0 on success. -1 on error.
