@@ -4,6 +4,7 @@
 ```void(*signal(int sig, void (*func)(int)))(int);```
 - calls func when the signal sig occurs.
 - recommended to use sigaction() instead - portability issues
+
 ###	sigemptyset()
 ```int	sigemptyset(sigset_t *set);```
 - initializes the signal set given by set to empty, with all signals excluded from the set.
@@ -46,17 +47,21 @@
 - if sig == 0 (null signal) --> used to check the validity of pid.
 
 - returns 0 on completion, -1 on error.
+
 ### getpid()
 ```pid_t getpid(void);```
 - returns the process ID (PID) of the calling process.
+
 ### pause()
 ```int pause(void);```
 - causes the calling process (or thread) to sleep until a signal is delivered that either terminates the process or causes the invocation of a signal-catching function.
 - returns only -1 when a signal was caught and the signal-catching function returned.
+
 ### sleep()
 ```unsigned int sleep(unsigned int seconds);```
 - causes the calling thread to sleep either until the number of real-time seconds specified by secons are elapsed or until a signal arrives which is not ignored.
 - returns 0 if the time has elapsed or the number of seconds left to sleep, if the call was interrupted.
+
 ### usleep()
 ```int usleep(useconds_t used);```
 - suspends execution of the calling thread for (at least) usec microseconds.
