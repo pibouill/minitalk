@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:01 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/09 17:19:26 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:34:48 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	sig_handler(int signum, siginfo_t *info, void *context)
 			pid = 0;
 			return ;
 		}
-		write(1, "c", 1);
+		ft_printf("%c", c);
 		c = 0;
 	}
 	kill(pid, SIGUSR2);
