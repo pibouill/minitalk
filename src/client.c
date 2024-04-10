@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:11 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/08 14:53:16 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/10 12:47:25 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	char_to_bin(char c, int pid)
 	bit_i = 7;
 	while (bit_i >= 0)
 	{
-		if ((c >> bit_i) & 1 == 1)
+		if ((c >> bit_i) & 1)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
@@ -65,10 +65,10 @@ int	main(int ac, char **av)
 	{
 		client_pid = ft_atoi(av[1]);
 		sigemptyset(&sa.sa_mask);
-		sa.sa_handler = sig_handler;
+		sa.sa_sigaction = sig_handler;
 		sa.sa_flags = SA_SIGINFO;
-		sigaction(SIGUSR1, sa, NULL);
-		sigaction(SIGUSR2, sa, NULL);
+		sigaction(SIGUSR1, &sa, NULL);
+		sigaction(SIGUSR2, &sa, NULL);
 		i = -1;
 		while (av[2][i++])
 			char_to_bin(av[2][i], client_pid);

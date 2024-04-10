@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:01 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/09 17:34:48 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/10 12:45:09 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	client_pid = getpid();
+	ft_printf("Server PID: <%d>\n", client_pid);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_sigaction = sig_handler;
 	sa.sa_flags = SA_SIGINFO;

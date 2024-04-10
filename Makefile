@@ -6,7 +6,7 @@
 #    By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 16:05:51 by pibouill          #+#    #+#              #
-#    Updated: 2024/04/09 17:25:18 by pibouill         ###   ########.fr        #
+#    Updated: 2024/04/10 12:41:18 by pibouill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ $(SERVER): $(SERVER_OBJ)
 
 $(CLIENT): $(CLIENT_OBJ)
 	+@make -C libft --no-print-directory
-	+@$(CC) -o $(CLIENT) $(CLIENT_OBJ)
+	+@$(CC) -o $(CLIENT) $(CLIENT_OBJ) -L $(LIB_DIR) -l $(LIB_CUT)
 	+@echo "$(GREEN)$(CLIENT) compiled.$(END_COLOR)"
 
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.c Makefile libft/src/*.c | $(BIN_DIR)
