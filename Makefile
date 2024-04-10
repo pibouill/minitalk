@@ -6,7 +6,7 @@
 #    By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 16:05:51 by pibouill          #+#    #+#              #
-#    Updated: 2024/04/10 12:41:18 by pibouill         ###   ########.fr        #
+#    Updated: 2024/04/10 15:49:34 by pibouill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ $(BIN_DIR):
 
 clean:
 	+@rm -rf $(BIN_DIR)
-	+@echo "$(GREEN)$(NAME) object files cleaned.$(END_COLOR)"
+	+@echo "$(BLUE)$(NAME) object files cleaned.$(END_COLOR)"
 	+@make clean -C libft --no-print-directory
 
 fclean: clean

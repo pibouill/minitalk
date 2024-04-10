@@ -6,7 +6,7 @@
 #    By: pibouill <pibouill@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/17 10:56:08 by pibouill          #+#    #+#              #
-#    Updated: 2024/01/24 17:28:48 by pibouill         ###   ########.fr        #
+#    Updated: 2024/04/10 15:48:53 by pibouill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ $(BIN_DIR):
 
 clean:
 	@$(RM) $(BIN_DIR)
-	@echo "$(YELLOW)$(NAME) object files and bin/ cleaned.$(END_COLOR)"
+	@echo "$(BLUE)$(NAME) object files and bin/ cleaned.$(END_COLOR)"
 
 fclean: clean
 	@$(RM) $(NAME)

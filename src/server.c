@@ -6,48 +6,47 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:01 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/10 12:45:09 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:34:31 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	bin_to_char(char *c, int signum)
+int	g_received;
+
+void	bin_to_char(int sig)
 {
-	if (signum == SIGUSR1)
-		*c = (*c << 1) | 1;
-	else if (signum == SIGUSR2)
-		*c <<= 1;
+	static int	bit;
+	static int	i;
+
+	if (sig == SIGUSR1)
+		i |= (1 << bit);
+	bit++;
+	if (bit == 8)
+	{
+		ft_printf("%c", i);
+		bit = 0;
+		i = 0;
+	}
 }
 
 void	sig_handler(int signum, siginfo_t *info, void *context)
 {
-	static int	pid;
-	static int	i;
-	static char	c;
-
 	(void)context;
-	pid = info->si_pid;
-	bin_to_char(&c, signum);
-	if (++i == 8)
+	(void)info;
+	if (signum == SIGUSR1)
+		g_received = 1;
+	else if (signum == SIGUSR2)
 	{
-		i = 0;
-		if (c == 0)
-		{
-			kill(pid, SIGUSR1);
-			pid = 0;
-			return ;
-		}
-		ft_printf("%c", c);
-		c = 0;
+		ft_printf("String received.\n");
+		exit(EXIT_SUCCESS);
 	}
-	kill(pid, SIGUSR2);
 }
 
 int	main(int ac, char **av)
 {
-	struct sigaction sa;
-	int	client_pid;
+	struct	sigaction sa;
+	int		client_pid;
 
 	(void)ac;
 	(void)av;
