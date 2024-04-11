@@ -6,50 +6,36 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:01 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/10 17:59:38 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:38:49 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/*void	bin_to_char(int sig)
-{
-	static int	bit;
-	static int	i;
-
-	if (sig == SIGUSR1)
-		i |= (1 << bit);
-	bit++;
-	if (bit == 8)
-	{
-		ft_printf("%c", i);
-		bit = 0;
-		i = 0;
-	}
-}*/
-
 void	sig_handler(int signum, siginfo_t *info, void *context)
 {
-	(void)context;
-	static int	bit;
-	static int	i;
+	static unsigned char	c;
+	static int				bit_count;
+	static pid_t			client_pid;
 
+	(void)context;
+	if (client_pid != info->si_pid)
+	{
+		bit_count = 0;
+		c = 0;
+	}
+	client_pid = info->si_pid;
+	c = c << 1;
 	if (signum == SIGUSR1)
-		i |= (1 << bit);
-	bit++;
-	if (bit == 8 && i != 0)
+		c |= 1;
+	bit_count++;
+	if (bit_count == 8)
 	{
-		write(1, &i, 1);
-		bit = 0;
-		i = 0;
+		write(1, &c, 1);
+		bit_count = 0;
+		c = 0;
 	}
-	if (bit == 8 && i == 0)
-	{
-		kill(info->si_pid, SIGUSR1);
-		write(1, &i, 1);
-		bit = 0;
-		i = 0;
-	}
+	kill(client_pid, SIGUSR2);
 }
 
 int	main(int ac, char **av)
