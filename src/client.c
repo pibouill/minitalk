@@ -6,7 +6,11 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:11 by pibouill          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/04/16 13:52:47 by pibouill         ###   ########.fr       */
+=======
+/*   Updated: 2024/04/11 17:58:40 by pibouill         ###   ########.fr       */
+>>>>>>> 7d36b267f20ee26a3aa925e7c743329996d8dac0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +47,14 @@ int	g_receiver_flag = 0;
 
 void	send_resp(int signum)
 {
+<<<<<<< HEAD
 	if (signum == SIGUSR1)
 		ft_printf("Message received.\n");
 	g_receiver_flag = 1;
+=======
+	g_receiver_flag = 1;
+	(void)signum;
+>>>>>>> 7d36b267f20ee26a3aa925e7c743329996d8dac0
 }
 
 void	send_bit(int pid, int bit)
@@ -74,7 +83,11 @@ void	send_char(int pid, unsigned char c)
 	while (i >= 0)
 	{
 		send_bit(pid, (c >> i) & 1);
+<<<<<<< HEAD
 		usleep(50);
+=======
+		usleep(100);
+>>>>>>> 7d36b267f20ee26a3aa925e7c743329996d8dac0
 		i--;
 	}
 }
