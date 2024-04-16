@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:01 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/11 17:38:49 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/16 13:11:21 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	sig_handler(int signum, siginfo_t *info, void *context)
 
 int	main(int ac, char **av)
 {
-	struct	sigaction sa;
-	int		server_pid;
+	struct sigaction	sa;
+	int					server_pid;
 
 	(void)ac;
 	(void)av;
