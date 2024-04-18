@@ -7,4 +7,5 @@ bin/
 *.md
 server
 client
+.nfs*
 

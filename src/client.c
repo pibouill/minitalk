@@ -6,14 +6,14 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:11 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/16 13:56:53 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:55:43 by pibouill         ###   ########.fr       */
 /*   Updated: 2024/04/11 17:58:40 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	g_receiver_flag = 0;
+/*int	g_receiver_flag = 0;*/
 
 /*void	char_to_bin(char c, int pid)*/
 /*{*/
@@ -44,11 +44,9 @@ int	g_receiver_flag = 0;
 
 void	send_resp(int signum)
 {
-	if (signum == SIGUSR1)
+	/*g_receiver_flag = 1;*/
+	if (signum == SIGUSR2)
 		ft_printf("Message received.\n");
-	g_receiver_flag = 1;
-	g_receiver_flag = 1;
-	(void)signum;
 }
 
 void	send_bit(int pid, int bit)
@@ -64,9 +62,9 @@ void	send_bit(int pid, int bit)
 		ft_printf("Sending Error.\n");
 		exit(EXIT_FAILURE);
 	}
-	while (g_receiver_flag == 0)
+	/*while (g_receiver_flag == 0)
 		;
-	g_receiver_flag = 0;
+	g_receiver_flag = 0;*/
 }
 
 void	send_char(int pid, unsigned char c)
@@ -77,7 +75,6 @@ void	send_char(int pid, unsigned char c)
 	while (i >= 0)
 	{
 		send_bit(pid, (c >> i) & 1);
-		usleep(50);
 		usleep(100);
 		i--;
 	}
@@ -94,7 +91,7 @@ int	main(int ac, char **av)
 {
 	pid_t		client_pid;
 
-	if (ac == 3 && ft_atoi(av[1]) > 0)
+	if (ac == 3) 
 	{
 		client_pid = ft_atoi(av[1]);
 		if (client_pid <= 0)
@@ -102,6 +99,7 @@ int	main(int ac, char **av)
 			ft_printf("Invalid PID\n");
 			exit(EXIT_FAILURE);
 		}
+		signal(SIGUSR1, send_resp);
 		signal(SIGUSR2, send_resp);
 		send_str(client_pid, av[2]);
 	}
