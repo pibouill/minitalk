@@ -6,7 +6,7 @@
 #    By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 16:05:51 by pibouill          #+#    #+#              #
-#    Updated: 2024/04/10 15:49:34 by pibouill         ###   ########.fr        #
+#    Updated: 2024/04/21 13:59:01 by pibouill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,15 @@
 
 NAME 		= minitalk
 SERVER		= server
+SERVER_BONUS = server_bonus
 CLIENT		= client
+CLIENT_BONUS = client_bonus
 CFLAGS 		= -Wall -Werror -Wextra -g
 CC 			= cc
 RM			= rm
 SRC_DIR 	= src
 INC			= -I ./inc/
+INC_BONUS	= -I ./inc/minitalk_bonus.h
 BIN_DIR 	= bin
 LIB_INC 	= -I ./libft/inc/
 LIB_DIR 	= libft
@@ -38,14 +41,20 @@ END_COLOR	= \033[0;39m
 ################################################################################
 ## SOURCES
 
-SERVER_SRCS	= server
-CLIENT_SRCS	= client
+SERVER_SRC_FILES		= server
+SERVER_SRC_FILES_BONUS	= server_bonus
+CLIENT_SRC_FILES		= client
+CLIENT_SRC_FILES_BONUS	= client_bonus
 
-SERVER_SRC	= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SERVER_SRCS)))
-SERVER_OBJ	= $(addprefix $(BIN_DIR)/, $(addsuffix .o, $(SERVER_SRCS)))
+SERVER_SRC			=	$(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SERVER_SRC_FILES)))
+SERVER_OBJ			=	$(addprefix $(BIN_DIR)/, $(addsuffix .o, $(SERVER_SRC_FILES)))
+SERVER_SRC_BONUS	=	$(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SERVER_SRC_FILES_BONUS)))
+SERVER_OBJ_BONUS	=   $(addprefix $(BIN_DIR)/, $(addsuffix .o, $(SERVER_SRC_FILES_BONUS)))
 
-CLIENT_SRC	= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(CLIENT_SRCS)))
-CLIENT_OBJ	= $(addprefix $(BIN_DIR)/, $(addsuffix .o, $(CLIENT_SRCS)))
+CLIENT_SRC			=	$(addprefix $(SRC_DIR)/, $(addsuffix .c, $(CLIENT_SRC_FILES)))
+CLIENT_OBJ			=	$(addprefix $(BIN_DIR)/, $(addsuffix .o, $(CLIENT_SRC_FILES)))
+CLIENT_SRC_BONUS	=	$(addprefix $(SRC_DIR)/, $(addsuffix .c, $(CLIENT_SRC_FILES_BONUS)))
+CLIENT_OBJ_BONUS	=   $(addprefix $(BIN_DIR)/, $(addsuffix .o, $(CLIENT_SRC_FILES_BONUS)))
 
 ################################################################################
 ## RULES
@@ -70,13 +79,25 @@ $(BIN_DIR):
 	+@mkdir $(BIN_DIR)
 	+@echo "$(YELLOW)Created $(BIN_DIR)/ directory at $(NAME)/$(END_COLOR)"
 
+bonus: $(SERVER_BONUS) $(CLIENT_BONUS)
+
+$(SERVER_BONUS): $(SERVER_OBJ_BONUS)
+	+@make -C libft --no-print-directory
+	+@$(CC) -o $(SERVER_BONUS) $(SERVER_OBJ_BONUS) -L $(LIB_DIR) -l $(LIB_CUT)
+	+@echo "$(GREEN)$(SERVER_BONUS) compiled.$(END_COLOR)"
+
+$(CLIENT_BONUS): $(CLIENT_OBJ_BONUS)
+	+@make -C libft --no-print-directory
+	+@$(CC) -o $(CLIENT_BONUS) $(CLIENT_OBJ_BONUS) -L $(LIB_DIR) -l $(LIB_CUT)
+	+@echo "$(GREEN)$(CLIENT_BONUS) compiled.$(END_COLOR)"
+
 clean:
 	+@rm -rf $(BIN_DIR)
 	+@echo "$(BLUE)$(NAME) object files cleaned.$(END_COLOR)"
 	+@make clean -C libft --no-print-directory
 
 fclean: clean
-	+@rm -f $(NAME)
+	+@rm -f $(SERVER) $(SERVER_BONUS) $(CLIENT) $(CLIENT_BONUS)
 	+@echo "$(YELLOW)$(NAME) executable files cleaned.$(END_COLOR)"
 	+@rm -f libft/libft.a
 	+@echo "$(YELLOW)$(LIB_DIR).a file cleaned.$(END_COLOR)"
