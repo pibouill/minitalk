@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 17:03:20 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/21 11:22:06 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:16:53 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,11 @@
 # include <stdlib.h>
 # include "libft.h"
 
-
 typedef struct info
 {
 	int		flag;
 	int		bit;
 	char	c;
-}
-				t_info;
-
-
+}				t_info;
 
 #endif

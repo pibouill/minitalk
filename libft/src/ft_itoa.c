@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:37:23 by pibouill          #+#    #+#             */
-/*   Updated: 2023/11/23 15:42:37 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:19:41 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,3 @@ char	*ft_itoa(int n)
 	}
 	return (res);
 }
-
- //int	main()
- //{
- //	printf("%s\n", ft_itoa(0));
- //	return (0);
- //}

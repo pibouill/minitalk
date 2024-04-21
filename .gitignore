@@ -6,6 +6,8 @@ a.out
 bin/
 *.md
 server
+server_bonus
 client
+client_bonus
 .nfs*
 

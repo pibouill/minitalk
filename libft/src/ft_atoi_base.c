@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base_new.c                                 :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:40:26 by pibouill          #+#    #+#             */
-/*   Updated: 2024/01/25 15:10:32 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:19:14 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 static int	is_valid_char(char c)
 {
-	return ((c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'));
+	return ((c >= 'a' && c <= 'f')
+		|| (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'));
 }
 
 int	ft_atoi_base(const char *str, unsigned int base)
 {
-	int	ret = 0;
-	int	sign = 1;
+	int	ret;
+	int	sign;
 
+	ret = 0;
+	sign = 1;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
@@ -40,4 +43,3 @@ int	ft_atoi_base(const char *str, unsigned int base)
 	}
 	return (ret * sign);
 }
-		

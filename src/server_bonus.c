@@ -6,14 +6,13 @@
 /*   By: pibouill <pibouill@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 13:36:52 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/21 13:38:47 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:15:07 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
 static t_info	g_info;
-
 
 void	sig_handler(int signum, siginfo_t *siginfo, void *context)
 {

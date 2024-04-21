@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:02:47 by pibouill          #+#    #+#             */
-/*   Updated: 2024/03/29 13:50:11 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:22:23 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # endif
 
 # ifndef FD_LIMIT
-# define FD_LIMIT 1024
+#  define FD_LIMIT 1024
 # endif
 
 typedef struct s_list
@@ -83,10 +83,10 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-int     putchar_len(int c);
-int     putstr_len(char *str);
-int     putptr_len(unsigned long long ptr, int ptr_prefix);
-int     put_nbr_u_hex_len(long n, int base, int is_uppercase);
+int		putchar_len(int c);
+int		putstr_len(char *str);
+int		putptr_len(unsigned long long ptr, int ptr_prefix);
+int		put_nbr_u_hex_len(long n, int base, int is_uppercase);
 
 //	ADDITIONAL
 char	*ft_itoa(int n);
@@ -113,7 +113,7 @@ void	ft_putnbr(int n);
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 int		ft_digitcount(long nb, int base, int sign);
-int     ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 int		ft_intlen(int nbr);
 int		ft_atoi_base(const char *str, unsigned int base);
 int		ft_str_arr_len(char **ar);

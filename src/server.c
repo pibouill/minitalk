@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:01 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/21 11:29:40 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:14:59 by pibouill         ###   ########.fr       */
 /*   Updated: 2024/04/11 17:38:49 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -14,7 +14,6 @@
 #include "minitalk.h"
 
 static t_info	g_info;
-
 
 void	sig_handler(int signum, siginfo_t *siginfo, void *context)
 {

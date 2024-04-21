@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:38:01 by pibouill          #+#    #+#             */
-/*   Updated: 2024/02/09 15:43:55 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:21:14 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ long	ft_atol(const char *str)
 	long	res;
 
 	sign = 1;
-	res	= 0;
+	res = 0;
 	while ((*str == ' ') || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '-' || *str == '+')
@@ -38,6 +38,3 @@ long	ft_atol(const char *str)
 	}
 	return (res * sign);
 }
-		
-
-
