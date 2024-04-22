@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 13:36:40 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/22 15:18:31 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:28:51 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	send_bits(char bit, int server_pid)
 int	main(int ac, char **av)
 {
 	struct sigaction	sa;
-	size_t					i;
+	size_t				i;
 	int					server_pid;
 
 	if (ac == 3)
