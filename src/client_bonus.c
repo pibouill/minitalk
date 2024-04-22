@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 13:36:40 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/22 17:03:49 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:08:59 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	main(int ac, char **av)
 		sa.sa_handler = sig_handler;
 		i = 0;
 		server_pid = ft_atoi(av[1]);
+		sigaction(SIGUSR2, &sa, NULL);
 		while (1)
 		{
-			sigaction(SIGUSR2, &sa, NULL);
 			while (i <= ft_strlen(av[2]))
 			{
 				send_bits(av[2][i], server_pid);
