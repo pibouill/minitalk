@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:11 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/21 11:38:30 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:21:15 by pibouill         ###   ########.fr       */
 /*   Updated: 2024/04/11 17:58:40 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ void	send_bits(char bit, int server_pid)
 			kill(server_pid, SIGUSR2);
 		else
 			kill(server_pid, SIGUSR1);
-		usleep(150);
+		usleep(400);
 		i--;
 	}
 }
@@ -39,7 +39,7 @@ void	send_bits(char bit, int server_pid)
 int	main(int ac, char **av)
 {
 	struct sigaction	sa;
-	int					i;
+	size_t					i;
 	int					server_pid;
 
 	if (ac == 3)
@@ -47,10 +47,10 @@ int	main(int ac, char **av)
 		sa.sa_handler = sig_handler;
 		i = 0;
 		server_pid = ft_atoi(av[1]);
+		sigaction(SIGUSR2, &sa, NULL);
 		while (1)
 		{
-			sigaction(SIGUSR2, &sa, NULL);
-			while (i <= (int)ft_strlen(av[2]))
+			while (i <= ft_strlen(av[2]))
 			{
 				send_bits(av[2][i], server_pid);
 				i++;

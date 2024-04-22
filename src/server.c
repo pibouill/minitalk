@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:01 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/21 14:14:59 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:21:06 by pibouill         ###   ########.fr       */
 /*   Updated: 2024/04/11 17:38:49 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -51,11 +51,9 @@ int	main(int ac, char **av)
 	sa.sa_flags = SA_SIGINFO;
 	g_info.bit = 8;
 	g_info.c = 0;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
-	{
-		sigaction(SIGUSR1, &sa, NULL);
-		sigaction(SIGUSR2, &sa, NULL);
 		pause();
-	}
 	return (0);
 }
