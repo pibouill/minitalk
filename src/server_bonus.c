@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server_bonus.c                                     :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pibouill <pibouill@student.42prague.com>   +#+  +:+       +#+        */
+/*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 13:36:52 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/24 15:37:54 by pibouill         ###   ########.fr       */
+/*   Created: 2024/04/22 16:03:44 by pibouill          #+#    #+#             */
+/*   Updated: 2024/04/24 17:23:45 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk_bonus.h"
+#include "minitalk.h"
 
 static t_info	g_info;
 

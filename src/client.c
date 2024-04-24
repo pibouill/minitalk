@@ -5,17 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 15:04:11 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/24 15:06:30 by pibouill         ###   ########.fr       */
-/*   Updated: 2024/04/11 17:58:40 by pibouill         ###   ########.fr       */
+/*   Created: 2024/04/24 18:29:33 by pibouill          #+#    #+#             */
+/*   Updated: 2024/04/24 18:29:35 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	sig_handler(int sig)
+void	sig_handler(int signum)
 {
-	(void)sig;
+	(void)signum;
 	ft_printf("Message acknowledged by the server and signal sent back.\n");
 	exit(EXIT_SUCCESS);
 }
@@ -40,7 +39,7 @@ int	main(int ac, char **av)
 {
 	struct sigaction	sa;
 	size_t				i;
-	int					server_pid;
+	pid_t				server_pid;
 
 	if (ac == 3)
 	{
@@ -51,10 +50,7 @@ int	main(int ac, char **av)
 		while (1)
 		{
 			while (i <= ft_strlen(av[2]))
-			{
-				send_bits(av[2][i], server_pid);
-				i++;
-			}
+				send_bits(av[2][i++], server_pid);
 			pause();
 		}
 	}
