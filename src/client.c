@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:04:11 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/22 17:03:31 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:06:30 by pibouill         ###   ########.fr       */
 /*   Updated: 2024/04/11 17:58:40 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ void	send_bits(char bit, int server_pid)
 	i = 7;
 	while (i >= 0)
 	{
-		if ((bit >> i) & 1)
+		if (((bit >> i) & 1) == 1)
 			kill(server_pid, SIGUSR2);
 		else
 			kill(server_pid, SIGUSR1);
