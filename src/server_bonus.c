@@ -3,36 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pibouill <pibouill@student.42prague.com>   +#+  +:+       +#+        */
+/*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 23:00:27 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/24 23:00:38 by pibouill         ###   ########.fr       */
+/*   Created: 2024/04/22 16:03:44 by pibouill          #+#    #+#             */
+/*   Updated: 2024/04/25 13:30:24 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-static t_info	g_info;
-
 void	sig_handler(int signum, siginfo_t *siginfo, void *context)
 {
+	static int	flag = 0;
+	static int	bit = 8;
+	static char	c = 0;
+
 	(void)context;
 	if (signum == SIGUSR1)
-		g_info.flag = 0;
+		flag = 0;
 	else if (signum == SIGUSR2)
-		g_info.flag = 1;
-	g_info.bit--;
-	g_info.c += (g_info.flag << g_info.bit);
-	if (g_info.bit == 0)
+		flag = 1;
+	bit--;
+	c += (flag << bit);
+	if (bit == 0)
 	{
-		if (g_info.c == 0)
+		if (c == 0)
 		{
-			ft_printf("\n");
+			write(1, "\n", 1);
 			kill(siginfo->si_pid, SIGUSR2);
 		}
-		ft_printf("%c", g_info.c);
-		g_info.bit = 8;
-		g_info.c = 0;
+		write(1, &c, 1);
+		bit = 8;
+		c = 0;
 	}
 }
 
@@ -48,8 +50,6 @@ int	main(int ac, char **av)
 	sigemptyset(&sa.sa_mask);
 	sa.sa_sigaction = sig_handler;
 	sa.sa_flags = SA_SIGINFO;
-	g_info.bit = 8;
-	g_info.c = 0;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)

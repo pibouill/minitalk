@@ -6,7 +6,7 @@
 /*   By: pibouill <pibouill@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 17:03:20 by pibouill          #+#    #+#             */
-/*   Updated: 2024/04/24 15:58:17 by pibouill         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:19:52 by pibouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,5 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft.h"
-
-typedef struct info
-{
-	int		flag;
-	int		bit;
-	char	c;
-	pid_t	server_pid;
-}				t_info;
 
 #endif
