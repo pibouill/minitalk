@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-     <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/pibouill/minitalk">
+     <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/:user/https%3A%2F%2Fgithub.com%2Fpibouill%2Fminitalk%3Ftab%3Dreadme-ov-file">
 </p>
  
  >The purpose of this project is to code a small data exchange program using UNIX signals
