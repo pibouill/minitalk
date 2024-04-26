@@ -13,13 +13,13 @@
 ## Task
 Creating a communication program in the form of a client and a server.
 
-Server is launched at first and will print its PID.
-The client takes as parameters, the server PID and a string to send.
+Server is launched at first and will print its **PID**.
+The client takes as parameters, the server **PID** and a string to send.
 
-We can only use the SIGUSR1 and SIGUSR2 signals.
+We can only use the `SIGUSR1` and `SIGUSR2` signals.
 
 The server acknowledges the message received by sending back a signal to the client.
-Unicode characters support (partially) supported.
+Unicode characters _partially_ supported.
 
 ### Allowed `signal.h` functions
 + signal
