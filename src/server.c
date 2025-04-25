@@ -10,30 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../inc/minitalk.h"
+#include <bits/types/siginfo_t.h>
+
+void	handle_message(char c, char **message, size_t *msg_len,
+			siginfo_t *siginfo)
+{
+	if (c == 0)
+	{
+		if (*message)
+		{
+			write(1, *message, *msg_len);
+			write(1, "\n", 1);
+			free(*message);
+			*message = NULL;
+			*msg_len = 0;
+		}
+		kill(siginfo->si_pid, SIGUSR2);
+	}
+	else
+	{
+		*message = ft_realloc(*message, *msg_len, *msg_len + 1);
+		(*message)[*msg_len] = c;
+		(*msg_len)++;
+	}
+}
 
 void	sig_handler(int signum, siginfo_t *siginfo, void *context)
 {
-	static int	flag = 0;
-	static int	bit = 8;
-	static char	c = 0;
+	static int		bit;
+	static char		c;
+	static char		*message;
+	static size_t	msg_len;
 
 	(void)context;
-	if (signum == SIGUSR1)
-		flag = 0;
-	else if (signum == SIGUSR2)
-		flag = 1;
+	if (bit == 0)
+		bit = 8;
 	bit--;
-	c += (flag << bit);
+	if (signum == SIGUSR1)
+		c &= ~(1 << bit);
+	else if (signum == SIGUSR2)
+		c |= (1 << bit);
 	if (bit == 0)
 	{
-		if (c == 0)
-		{
-			write(1, "\n", 1);
-			kill(siginfo->si_pid, SIGUSR2);
-		}
-		write(1, &c, 1);
-		bit = 8;
+		handle_message(c, &message, &msg_len, siginfo);
 		c = 0;
 	}
 }

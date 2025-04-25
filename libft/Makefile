@@ -84,7 +84,8 @@ SRC_FILES		=		ft_atoi\
 						ft_tolower\
 						ft_toupper\
 						get_next_line\
-						putfcts_len
+						putfcts_len\
+						ft_realloc
 
 SRC					= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
 OBJ 				= $(addprefix $(BIN_DIR)/, $(addsuffix .o, $(SRC_FILES)))

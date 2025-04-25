@@ -77,6 +77,7 @@ void	ft_bzero(void *s, size_t n);
 //	STDLIB
 int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_realloc(void *ptr, size_t size, size_t new_size);
 
 //	PUT
 void	ft_putchar_fd(char c, int fd);
